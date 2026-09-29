@@ -1,4 +1,4 @@
-[USER_MANUAL.md](https://github.com/user-attachments/files/32818214/USER_MANUAL.md)
+[USER_MANUAL(1).md](https://github.com/user-attachments/files/32818334/USER_MANUAL.1.md)
 # User Manual
 ## FSOC Coarse PAT Simulator — Installation, Operation & Configuration Guide
 
@@ -213,6 +213,12 @@ No display output. The simulation runs at maximum speed and generates telemetry 
 ### 6.1 Main Window Layout
 
 The GUI dashboard uses a responsive splitter-based layout with four main zones:
+
+![FSOC Coarse PAT GUI Dashboard](images/gui_dashboard.jpeg)
+
+*Figure 6.1 — The FSOC Coarse PAT Mission-Control GUI, showing the camera viewport with HUD overlay, tactical overview map, telemetry panel, and strip-charts.*
+
+The schematic below summarises the layout:
 
 ```
 ┌──────────────────────────────────────────────────────────────┐
