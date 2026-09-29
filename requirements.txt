@@ -1,0 +1,14 @@
+# Core Numerical & Scientific Computing
+numpy>=1.24.0
+opencv-python>=4.8.0
+
+# GUI & Real-Time Visualization
+PySide6>=6.5.0
+pyqtgraph>=0.13.0
+matplotlib>=3.7.0
+
+# Machine Learning & AI Detection
+ultralytics>=8.0.0
+
+# Testing & Benchmarking
+pytest>=7.0.0

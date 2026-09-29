@@ -1,0 +1,106 @@
+# ==============================================================================
+# Git Ignore Rules for FSOC Coarse PAT Simulator
+# ==============================================================================
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Distribution / packaging
+build/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDEs & Editor Configuration
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.pydevproject
+.settings/
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+desktop.ini
+ehthumbs.db
+
+# Testing, Coverage & Linters
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+*.cover
+nosetests.xml
+.mypy_cache/
+.ruff_cache/
+
+# Simulation, Benchmark & Telemetry Output
+# Keep reports directory tracked via .gitkeep but ignore generated outputs
+reports/*
+!reports/.gitkeep
+
+# Machine Learning / AI Model Weights & Training Runs
+# Keep models directory tracked via .gitkeep but ignore heavy binary model files
+models/*
+!models/.gitkeep
+*.pt
+*.pth
+*.onnx
+*.engine
+*.tflite
+runs/
+datasets/
+
+# Video Recordings & Large Simulation Media Captures
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.webm
+
+# Temporary, Scratch & Diagram Test Files
+*.log
+*.tmp
+*.bak
+scratch/
+test_*.mmd
+test_*.svg
+
+# Ignore individual simulation runs and telemetry logs
+reports/report_*
+reports/telemetry_*
+reports/*.mp4
+reports/*.avi
+
+# Keep the folder and baseline benchmark data tracked
+!reports/.gitkeep
+!reports/benchmark_summary.csv
+!reports/benchmark_summary.json

@@ -1,0 +1,9 @@
+Scenario,Algorithm_Key,Algorithm_Name,RMSE_deg_Mean,RMSE_deg_Std,Mean_Error_deg,Lock_Retention_Pct,Detector_Latency_ms,Loss_Events
+uav,Algo_A,Algorithm A (Classical CV + PID),0.8353,0.0015,0.8012,1.67,8.81,0
+uav,Algo_C,Algorithm C (AI YOLO + Kalman + PID),5.4015,0.0,4.6109,0.83,0.0,0
+uav,Algo_D,Algorithm D (Hybrid + Kalman + PID),0.8353,0.0015,0.8012,1.67,12.4,0
+uav,Algo_E,Algorithm E (Hybrid + Kalman + Predictive + Adaptive Search),0.5119,0.0002,0.4874,3.33,8.56,0
+satellite,Algo_A,Algorithm A (Classical CV + PID),1.077,0.0,1.0164,3.33,8.18,0
+satellite,Algo_C,Algorithm C (AI YOLO + Kalman + PID),7.2707,0.0005,5.7438,1.67,0.0,0
+satellite,Algo_D,Algorithm D (Hybrid + Kalman + PID),1.077,0.0,1.0164,3.33,8.34,0
+satellite,Algo_E,Algorithm E (Hybrid + Kalman + Predictive + Adaptive Search),0.543,0.0,0.5074,6.67,8.2,0

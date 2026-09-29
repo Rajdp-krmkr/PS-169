@@ -1,0 +1,64 @@
+{
+  "scenario_name": "UAV",
+  "world": {
+    "width_deg": 60.0,
+    "height_deg": 35.0,
+    "ambient_light": 15
+  },
+  "camera": {
+    "resolution": [1280, 720],
+    "fov_horizontal_deg": 20.0,
+    "fov_vertical_deg": 11.25,
+    "pan_limits_deg": [-60.0, 60.0],
+    "tilt_limits_deg": [-35.0, 35.0],
+    "max_pan_speed_deg_s": 25.0,
+    "max_tilt_speed_deg_s": 25.0,
+    "fps": 30.0
+  },
+  "beacon": {
+    "id": 1,
+    "name": "uav_optical_transceiver",
+    "initial_pos_deg": [3.0, 1.0],
+    "intensity": 240,
+    "radius_pixels": 6.0,
+    "color_bgr": [255, 255, 200],
+    "trajectory": {
+      "type": "sinusoidal",
+      "vx_deg_s": 1.5,
+      "vy_amplitude_deg": 2.0,
+      "vy_frequency_hz": 0.25,
+      "center_deg": [0.0, 0.0]
+    },
+    "blinking": {
+      "enabled": false
+    },
+    "distractors": []
+  },
+  "detection": {
+    "detector_type": "classical",
+    "binary_threshold": 140,
+    "min_area": 4.0,
+    "max_area": 1200.0,
+    "min_circularity": 0.50
+  },
+  "pid": {
+    "kp_pan": 1.8,
+    "ki_pan": 0.08,
+    "kd_pan": 0.18,
+    "kp_tilt": 1.8,
+    "ki_tilt": 0.08,
+    "kd_tilt": 0.18,
+    "dead_zone_deg": 0.04
+  },
+  "tracking": {
+    "prediction_horizon_steps": 5,
+    "search_strategy": "spiral"
+  },
+  "disturbances": {
+    "sensor_noise_percent": 12.0,
+    "vibration_percent": 15.0,
+    "turbulence_percent": 15.0,
+    "motion_blur_percent": 5.0,
+    "frame_drop_percent": 0.0
+  }
+}

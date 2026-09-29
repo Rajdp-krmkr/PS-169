@@ -1,0 +1,68 @@
+{
+  "world": {
+    "width_deg": 50.0,
+    "height_deg": 30.0,
+    "background_type": "dark",
+    "ambient_light": 5
+  },
+  "camera": {
+    "resolution": [1280, 720],
+    "fov_horizontal_deg": 25.0,
+    "fov_vertical_deg": 14.0,
+    "pan_limits_deg": [-45.0, 45.0],
+    "tilt_limits_deg": [-25.0, 25.0],
+    "max_pan_speed_deg_s": 20.0,
+    "max_tilt_speed_deg_s": 20.0,
+    "fps": 30.0
+  },
+  "beacon": {
+    "id": 1,
+    "name": "easy_beacon",
+    "initial_pos_deg": [1.0, 0.5],
+    "initial_vel_deg_s": [0.6, 0.3],
+    "intensity": 255,
+    "radius_pixels": 8.0,
+    "color_bgr": [255, 255, 255],
+    "trajectory": {
+      "type": "circular",
+      "radius_deg": 4.0,
+      "angular_speed_deg_s": 15.0,
+      "center_deg": [0.0, 0.0]
+    },
+    "blinking": {
+      "enabled": false
+    },
+    "distractors": []
+  },
+  "detection": {
+    "detector_type": "classical",
+    "binary_threshold": 140,
+    "min_area": 8.0,
+    "max_area": 2000.0,
+    "min_circularity": 0.5
+  },
+  "pid": {
+    "kp_pan": 1.2,
+    "ki_pan": 0.03,
+    "kd_pan": 0.15,
+    "kp_tilt": 1.2,
+    "ki_tilt": 0.03,
+    "kd_tilt": 0.15,
+    "dead_zone_deg": 0.03,
+    "integral_limit_deg": 2.0,
+    "derivative_filter_alpha": 0.8
+  },
+  "tracking": {
+    "prediction_horizon_steps": 3,
+    "uncertainty_timeout_steps": 10,
+    "loss_timeout_steps": 20
+  },
+  "disturbances": {
+    "sensor_noise_std": 0.0,
+    "vibration_amplitude_deg": 0.0,
+    "vibration_frequency_hz": 0.0,
+    "turbulence_strength": 0.0,
+    "motion_blur_kernel_size": 0,
+    "frame_drop_prob": 0.0
+  }
+}

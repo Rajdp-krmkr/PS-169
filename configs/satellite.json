@@ -1,0 +1,62 @@
+{
+  "scenario_name": "SATELLITE",
+  "world": {
+    "width_deg": 40.0,
+    "height_deg": 25.0,
+    "ambient_light": 5
+  },
+  "camera": {
+    "resolution": [1280, 720],
+    "fov_horizontal_deg": 12.0,
+    "fov_vertical_deg": 6.75,
+    "pan_limits_deg": [-45.0, 45.0],
+    "tilt_limits_deg": [-25.0, 25.0],
+    "max_pan_speed_deg_s": 35.0,
+    "max_tilt_speed_deg_s": 35.0,
+    "fps": 30.0
+  },
+  "beacon": {
+    "id": 1,
+    "name": "leo_satellite_beacon",
+    "initial_pos_deg": [-2.0, 1.5],
+    "intensity": 250,
+    "radius_pixels": 4.0,
+    "color_bgr": [255, 255, 255],
+    "trajectory": {
+      "type": "linear",
+      "vx_deg_s": 3.2,
+      "vy_deg_s": -0.8
+    },
+    "blinking": {
+      "enabled": false
+    },
+    "distractors": []
+  },
+  "detection": {
+    "detector_type": "classical",
+    "binary_threshold": 110,
+    "min_area": 2.0,
+    "max_area": 800.0,
+    "min_circularity": 0.45
+  },
+  "pid": {
+    "kp_pan": 2.2,
+    "ki_pan": 0.12,
+    "kd_pan": 0.20,
+    "kp_tilt": 2.2,
+    "ki_tilt": 0.12,
+    "kd_tilt": 0.20,
+    "dead_zone_deg": 0.03
+  },
+  "tracking": {
+    "prediction_horizon_steps": 6,
+    "search_strategy": "spiral"
+  },
+  "disturbances": {
+    "sensor_noise_percent": 8.0,
+    "vibration_percent": 20.0,
+    "turbulence_percent": 0.0,
+    "motion_blur_percent": 10.0,
+    "frame_drop_percent": 0.0
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "scenario_name": "EXTREME",
+  "world": {
+    "width_deg": 60.0,
+    "height_deg": 35.0,
+    "ambient_light": 20
+  },
+  "camera": {
+    "resolution": [1280, 720],
+    "fov_horizontal_deg": 18.0,
+    "fov_vertical_deg": 10.125,
+    "pan_limits_deg": [-60.0, 60.0],
+    "tilt_limits_deg": [-35.0, 35.0],
+    "max_pan_speed_deg_s": 30.0,
+    "max_tilt_speed_deg_s": 30.0,
+    "fps": 30.0
+  },
+  "beacon": {
+    "id": 1,
+    "name": "target_optical_beacon",
+    "initial_pos_deg": [2.0, 2.0],
+    "intensity": 255,
+    "radius_pixels": 6.5,
+    "color_bgr": [255, 255, 220],
+    "trajectory": {
+      "type": "maneuver",
+      "vx_deg_s": 1.8,
+      "vy_deg_s": 0.5,
+      "max_acc": 2.0,
+      "maneuver_interval_s": 1.5
+    },
+    "blinking": {
+      "enabled": false
+    },
+    "distractors": [
+      {
+        "id": 2,
+        "name": "flare_distractor",
+        "initial_pos_deg": [-4.0, 2.0],
+        "intensity": 200,
+        "radius_pixels": 5.0,
+        "color_bgr": [120, 120, 255],
+        "trajectory": {
+          "type": "linear",
+          "vx_deg_s": -1.0,
+          "vy_deg_s": -0.8
+        }
+      },
+      {
+        "id": 3,
+        "name": "glint_distractor",
+        "initial_pos_deg": [3.0, -3.0],
+        "intensity": 180,
+        "radius_pixels": 3.0,
+        "color_bgr": [255, 150, 100],
+        "trajectory": {
+          "type": "linear",
+          "vx_deg_s": 0.5,
+          "vy_deg_s": 1.2
+        }
+      }
+    ]
+  },
+  "detection": {
+    "detector_type": "classical",
+    "binary_threshold": 160,
+    "min_area": 4.0,
+    "max_area": 1400.0,
+    "min_circularity": 0.50
+  },
+  "pid": {
+    "kp_pan": 2.0,
+    "ki_pan": 0.10,
+    "kd_pan": 0.18,
+    "kp_tilt": 2.0,
+    "ki_tilt": 0.10,
+    "kd_tilt": 0.18,
+    "dead_zone_deg": 0.04
+  },
+  "tracking": {
+    "prediction_horizon_steps": 5,
+    "search_strategy": "spiral"
+  },
+  "disturbances": {
+    "sensor_noise_percent": 25.0,
+    "vibration_percent": 30.0,
+    "turbulence_percent": 25.0,
+    "motion_blur_percent": 20.0,
+    "frame_drop_percent": 0.02
+  }
+}
