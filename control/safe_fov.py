@@ -128,17 +128,17 @@ class DynamicSafeFOVEngine:
             risk_state = "CRITICAL"
             risk_score = 0.95
             diag = f"Critical pointing excursion (Error: {tracking_error_mrad:.2f} mrad) exceeding coarse FOV safety envelope."
-        elif dist_to_safe_edge_mrad < 1.0 or tracking_error_mrad > 4.0:
+        elif dist_to_safe_edge_mrad < 1.0 or tracking_error_mrad > 20.0:
             risk_state = "LOCK AT RISK"
             risk_score = 0.75
             diag = f"Lock at risk: Target approaching Safe FOV boundary ({dist_to_safe_edge_mrad:.1f} mrad margin) with elevated slew."
-        elif dist_to_safe_edge_mrad < 4.0 or tracking_error_mrad > 2.0 or confidence < 0.45:
+        elif dist_to_safe_edge_mrad < 4.0 or tracking_error_mrad > 10.0 or confidence < 0.45:
             risk_state = "WARNING"
             risk_score = 0.48
             diag = f"Warning: Safe boundary proximity ({dist_to_safe_edge_mrad:.1f} mrad margin) or degraded optical confidence ({confidence:.2f})."
         else:
             risk_state = "STABLE"
-            risk_score = max(0.05, min(0.30, 0.10 + (tracking_error_mrad / 15.0)))
+            risk_score = max(0.05, min(0.30, 0.10 + (tracking_error_mrad / 30.0)))
             diag = f"Nominal closed-loop PAT tracking. Pointing error within threshold ({tracking_error_mrad:.3f} mrad)."
 
         # Pixel coordinates of safe box on image plane

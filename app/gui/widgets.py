@@ -1,4 +1,4 @@
-﻿"""
+"""
 Reusable PySide6 custom widgets for FSOC PAT Mission-Control GUI.
 
 Includes:
@@ -124,8 +124,34 @@ class MetricCard(QWidget):
             f"background-color: #10141e; border: 1px solid #1c2233; border-left: 3px solid {accent_color}; border-radius: 4px;"
         )
 
-    def set_value(self, value_str: str) -> None:
+    def set_value(self, value_str: str, unit_str: Optional[str] = None) -> None:
         self.lbl_value.setText(value_str)
+        if unit_str is not None:
+            self.lbl_unit.setText(unit_str)
+            # Dynamic color styling for states
+            if unit_str == "READY":
+                self.lbl_value.setStyleSheet(
+                    "color: #00e676; font-size: 16px; font-weight: bold; font-family: 'Consolas', monospace;"
+                )
+                self.lbl_unit.setStyleSheet("color: #00e676; font-size: 9px; font-weight: bold;")
+            elif unit_str == "STABILIZING":
+                self.lbl_value.setStyleSheet(
+                    "color: #00e5ff; font-size: 16px; font-weight: bold; font-family: 'Consolas', monospace;"
+                )
+                self.lbl_unit.setStyleSheet("color: #00e5ff; font-size: 9px; font-weight: bold;")
+            elif unit_str == "NOT READY":
+                self.lbl_value.setStyleSheet(
+                    f"color: {self.accent_color}; font-size: 16px; font-weight: bold; font-family: 'Consolas', monospace;"
+                )
+                self.lbl_unit.setStyleSheet("color: #ff5252; font-size: 9px; font-weight: bold;")
+
+        # Dynamic color styling for Risk card values
+        if value_str == "STABLE":
+            self.lbl_value.setStyleSheet("color: #00e676; font-size: 16px; font-weight: bold; font-family: 'Consolas', monospace;")
+        elif value_str == "WARNING":
+            self.lbl_value.setStyleSheet("color: #ffea00; font-size: 16px; font-weight: bold; font-family: 'Consolas', monospace;")
+        elif value_str in ("LOCK AT RISK", "CRITICAL"):
+            self.lbl_value.setStyleSheet("color: #ff5252; font-size: 16px; font-weight: bold; font-family: 'Consolas', monospace;")
 
 
 class StateBannerWidget(QWidget):

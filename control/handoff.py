@@ -45,9 +45,9 @@ class FinePATHandoffEngine:
     def __init__(
         self,
         window_size: int = 15,
-        alignment_threshold_mrad: float = 2.0,
-        rms_threshold_mrad: float = 1.5,
-        max_speed_norm_mrad_s: float = 12.0,
+        alignment_threshold_mrad: float = 3.5,
+        rms_threshold_mrad: float = 2.5,
+        max_speed_norm_mrad_s: float = 45.0,
     ) -> None:
         self.window_size = window_size
         self.alignment_thresh = alignment_threshold_mrad

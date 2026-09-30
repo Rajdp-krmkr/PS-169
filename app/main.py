@@ -187,7 +187,10 @@ def run_simulation(
             )
         else:
             controller.track_angular_error(
-                tracker_out.cmd_delta_az_rad, tracker_out.cmd_delta_el_rad, dt
+                tracker_out.cmd_delta_az_rad,
+                tracker_out.cmd_delta_el_rad,
+                dt,
+                feedforward_vel_rad_s=tracker_out.estimated_vel_rad_s,
             )
 
         # 8. Step Camera Gimbal Kinematics

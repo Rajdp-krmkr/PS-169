@@ -106,7 +106,11 @@ class CameraGimbalController:
         self.camera.set_command_rate(0.0, 0.0)
 
     def track_pixel_error(
-        self, pixel_u: float, pixel_v: float, dt: float
+        self,
+        pixel_u: float,
+        pixel_v: float,
+        dt: float,
+        feedforward_vel_rad_s: Optional[Tuple[float, float]] = None,
     ) -> ControllerTelemetry:
         """
         Closed-loop track target from image sensor coordinates (u, v).
@@ -116,17 +120,27 @@ class CameraGimbalController:
             pixel_u, pixel_v, exact=True
         )
 
-        return self.track_angular_error(delta_az, delta_el, dt)
+        return self.track_angular_error(delta_az, delta_el, dt, feedforward_vel_rad_s=feedforward_vel_rad_s)
 
     def track_angular_error(
-        self, delta_az_rad: float, delta_el_rad: float, dt: float
+        self,
+        delta_az_rad: float,
+        delta_el_rad: float,
+        dt: float,
+        feedforward_vel_rad_s: Optional[Tuple[float, float]] = None,
     ) -> ControllerTelemetry:
         """
-        Closed-loop track target from angular errors (delta_az, delta_el in rad).
+        Closed-loop track target from angular errors (delta_az, delta_el in rad)
+        with optional predictive velocity feedforward compensation.
         """
         # Desired camera movement: positive delta_az -> rotate pan positive
         raw_cmd_pan = self.pid_pan.compute(delta_az_rad, dt)
         raw_cmd_tilt = self.pid_tilt.compute(delta_el_rad, dt)
+
+        # Feedforward velocity compensation
+        if feedforward_vel_rad_s is not None:
+            raw_cmd_pan += feedforward_vel_rad_s[0]
+            raw_cmd_tilt += feedforward_vel_rad_s[1]
 
         # Buffer through transport delay queue
         cmd_pan_rate, cmd_tilt_rate = self.delay_queue.step(raw_cmd_pan, raw_cmd_tilt)

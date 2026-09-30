@@ -213,9 +213,12 @@ class SimulationWorker(QThread):
                             tracker_out.search_rate_rad_s[0], tracker_out.search_rate_rad_s[1]
                         )
                     else:
-                        # Closed-loop PID tracking
+                        # Closed-loop PID tracking with predictive velocity feedforward
                         self.controller.track_angular_error(
-                            tracker_out.cmd_delta_az_rad, tracker_out.cmd_delta_el_rad, self.dt
+                            tracker_out.cmd_delta_az_rad,
+                            tracker_out.cmd_delta_el_rad,
+                            self.dt,
+                            feedforward_vel_rad_s=tracker_out.estimated_vel_rad_s,
                         )
 
                     # 8. Gimbal step
@@ -565,7 +568,7 @@ class FSOCMissionControlDashboard(QMainWindow):
                 f"ERROR: {err:.3f} deg | FRAMES: {self.total_frames_count}"
             )
         except Exception as e:
-            pass
+            print(f"[WARN] Dashboard telemetry update error: {e}")
 
     # --- UI Interactions ---
     def _toggle_pause(self) -> None:
